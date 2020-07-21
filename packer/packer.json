@@ -1,0 +1,21 @@
+{
+  "builders": [{
+    "type": "amazon-ebs",
+    "region": "ap-south-1",
+    "source_ami": "ami-0732b62d310b80e97",
+    "instance_type": "t2.micro",
+    "ami_name": "MySQL-AMI-{{timestamp}}",
+    "subnet_id":"{{ user `SUBNET_ID` }}",
+    "communicator": "ssh",
+    "ssh_username": "ec2-user",
+    "tags":{
+      "Description": "Created by Packer",
+      "Name": "MySQL-AMI"
+    }
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "environment_vars": "ROOT_PASS={{ user `ROOT_PASS` }},DB_USER_NAME={{ user `DB_USER_NAME` }},DB_USER_PASS={{ user `DB_USER_PASS` }}",
+    "script": "mysql_installer.sh"
+  }]
+}
