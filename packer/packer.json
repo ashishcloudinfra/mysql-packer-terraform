@@ -1,5 +1,9 @@
 {
+  "variables": {
+    "aws_profile": "{{env `AWS_PROFILE`}}"
+  },
   "builders": [{
+    "profile": "{{ user `aws_profile`}}",
     "type": "amazon-ebs",
     "region": "ap-south-1",
     "source_ami": "ami-0732b62d310b80e97",

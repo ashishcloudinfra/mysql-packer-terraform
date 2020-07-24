@@ -7,16 +7,9 @@ resource "aws_security_group" "module_sg" {
 
   # Rules
   ingress {
-    description = "Prometheus"
-    from_port   = 9090
-    to_port     = 9090
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  ingress {
-    description = "Prometheus"
-    from_port   = 9104
-    to_port     = 9104
+    description = "MySQL"
+    from_port   = 3306
+    to_port     = 3306
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -24,13 +17,6 @@ resource "aws_security_group" "module_sg" {
     description = "SSH"
     from_port   = 22
     to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  ingress {
-    description = "Grafana"
-    from_port   = 3000
-    to_port     = 3000
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

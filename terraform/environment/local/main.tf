@@ -1,6 +1,6 @@
 provider aws {
-  region  = var.aws_region
-  profile = "rushilab"
+  region = var.aws_region
+  #profile = "ashishb"
 }
 
 module "mysql_infra" {
